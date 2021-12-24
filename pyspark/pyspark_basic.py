@@ -8,7 +8,7 @@ spark = SparkSession \
     .appName("SparkExamples.com") \
     .getOrCreate()
 
-print(spark)
+# print(spark)
 
 # text_file = spark.read.text("NOTICE.txt")
 #
@@ -39,9 +39,13 @@ df.select("original_title").show()
 # dfnd = df.dropDuplicates()
 # dfnd.show()
 
+# df = spark.read \
+#    .option("header", True) \
+#    .csv("../data/zipcodes.csv")
+
 df = spark.read \
-    .option("header", True) \
-    .csv("../data/zipcodes.csv")
+    .load('../data/zipcodes.csv', format='csv', inferschema='true', header='true')
+
 df.groupby("ZipCodeType") \
     .count() \
     .show()
