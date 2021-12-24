@@ -41,7 +41,7 @@ df.select("original_title").show()
 
 df = spark.read \
     .option("header", True) \
-    .csv("./data/zipcodes.csv")
+    .csv("../data/zipcodes.csv")
 df.groupby("ZipCodeType") \
     .count() \
     .show()
