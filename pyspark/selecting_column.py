@@ -1,13 +1,13 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
-from pyspark.sql.functions import collect_list, avg, last
+from pyspark.sql.functions import col, collect_list, avg, last
 
 spark = (SparkSession
          .builder
          .master('local[1]')
          .appName('selecting_column')
          .getOrCreate())
-'''
+
 df = spark.read.load('../data/zipcodes.csv', format='csv', header='true')
 
 # Select Columns From DataFrame
@@ -37,15 +37,15 @@ df.select(df.columns[:3]).show(3)
 # Selects columns 2 to 4  and top 3 rows
 df.select(df.columns[2:4]).show(3)
 
-
+'''
     # collect () vs select ()
     select() is a transformation that returns a new DataFrame and holds the columns
     that are selected whereas collect() is an action that returns the entire data 
     set in an Array to the driver.
-
+'''
 dataCollect = df.collect()
 print(dataCollect)
-'''
+
 
 data = [
     (("James", None, "Smith"), "OH", "M", "Sales", 3000),
