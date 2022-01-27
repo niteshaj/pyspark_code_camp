@@ -1,5 +1,19 @@
 from functools import reduce
 
+
+x = ['Python', 'programming', 'is', 'awesome!']
+
+# filter() takes an iterable, calls the lambda function on each item,
+# and returns the items where the lambda returned True.
+''' 
+    Note: Calling list() is required because filter() is also an iterable.
+    filter() only gives you the values as you loop over them.
+    list() forces all the items into memory at once instead of having to use a loop.
+'''
+print(list(filter(lambda val: len(val) > 8, x)))
+
+print(list(map(lambda val: val.upper(), x)))
+
 # lambda params: expr(params)
 
 map((lambda x: x ** 2), [1, 2, 3])
@@ -75,3 +89,5 @@ def greater_then_six(value):
 
 
 print(list(filter(greater_then_six, numbers_reduce)))
+
+
